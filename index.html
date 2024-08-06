@@ -141,7 +141,7 @@
                 ></textarea>
               </div>
 
-              <button class="btn neumorphic-button w-100" type="button" id="obfuscateBtn">Obfuscate</button>
+              <button class="btn neumorphic-button w-100">Obfuscate</button>
             </form>
 
             <form class="mt-4 d-none" id="form2">
@@ -181,19 +181,56 @@
       </div>
     </main>
 
-
-       </div>
+    </div>
     </section>
 	<div class="footer">
 		<a href="https://t.me/BJ_Tricks">©Mr,BaBlU</a>
 	</div>
     <div class="divider"></div>
+
     <!-- Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Javascript Obfuscator -->
     <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
     <!-- Custom Javascript -->
-    <!-- Custom Javascript -->
-    <script src="app.js"></script>
+    <script>
+      let form = document.getElementById("form");
+      let form2 = document.getElementById("form2");
+      let javascriptCode = document.getElementById("javascriptCode");
+      let output = document.getElementById("output");
+      let obfuscateAnotherCode = document.getElementById("obfuscateAnotherCode");
+      let copyBtn = document.getElementById("copyBtn");
+
+      form.onsubmit = function (event) {
+        event.preventDefault();
+
+        var obfuscationResult = JavaScriptObfuscator.obfuscate(javascriptCode.value);
+
+        // Generate timestamp
+        let now = new Date();
+        let timestamp = now.toLocaleString(); // Format: "MM/DD/YYYY, HH:MM:SS"
+
+        // Create message
+        let message = `<!-- Obfuscated at ${timestamp} on https://bj-javascript-obfuscator.vercel.app/ ( Powered By Mr,BaBlU ) -->`;
+
+        // Set the message above the obfuscated code
+        output.value = message + '\n\n' + obfuscationResult.getObfuscatedCode();
+
+        form2.classList.remove("d-none");
+        form.classList.add("d-none");
+
+        javascriptCode.value = "";
+      };
+
+      obfuscateAnotherCode.onclick = function () {
+        form2.classList.add("d-none");
+        form.classList.remove("d-none");
+      };
+
+      copyBtn.onclick = function () {
+        navigator.clipboard.writeText(output.value);
+        alert("The output has been copied!");
+      };
+    </script>
   </body>
 </html>

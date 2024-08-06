@@ -141,7 +141,7 @@
                 ></textarea>
               </div>
 
-              <button class="btn neumorphic-button w-100">Obfuscate</button>
+              <button class="btn neumorphic-button w-100" type="button" id="obfuscateBtn">Obfuscate</button>
             </form>
 
             <form class="mt-4 d-none" id="form2">
@@ -188,13 +188,41 @@
 		<a href="https://t.me/BJ_Tricks">©Mr,BaBlU</a>
 	</div>
     <div class="divider"></div>
-    <script>
-
     <!-- Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Javascript Obfuscator -->
     <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
     <!-- Custom Javascript -->
-    <script src="app.js"></script>
+    <script>
+      document.getElementById('obfuscateBtn').addEventListener('click', function() {
+        var inputCode = document.getElementById('javascriptCode').value;
+        var obfuscatedCode = JavaScriptObfuscator.obfuscate(
+          inputCode,
+          {
+            compact: true,
+            controlFlowFlattening: true
+          }
+        ).getObfuscatedCode();
+        
+        document.getElementById('output').value = obfuscatedCode;
+        document.getElementById('form').classList.add('d-none');
+        document.getElementById('form2').classList.remove('d-none');
+      });
+
+      document.getElementById('obfuscateAnotherCode').addEventListener('click', function() {
+        document.getElementById('form2').classList.add('d-none');
+        document.getElementById('form').classList.remove('d-none');
+        document.getElementById('javascriptCode').value = '';
+        document.getElementById('output').value = '';
+      });
+
+      document.getElementById('copyBtn').addEventListener('click', function() {
+        var outputTextarea = document.getElementById('output');
+        outputTextarea.disabled = false;
+        outputTextarea.select();
+        document.execCommand('copy');
+        outputTextarea.disabled = true;
+      });
+    </script>
   </body>
 </html>

@@ -58,14 +58,71 @@
           8px 8px 15px #a3b1c6, 
           -8px -8px 15px #ffffff;
       }
+
+      /* Custom Styling for the FuckerJS Button */
+      .fuckerjs-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px; /* Adjust the height as needed */
+      }
+
+      .fuckerjs-button {
+        background: #f8f9fa;
+        color: #0d6efd;
+        border: 2px solid #0d6efd;
+        border-radius: 20px;
+        padding: 5px 10px; /* Smaller padding */
+        font-size: 14px; /* Smaller font size */
+        font-weight: bold;
+        text-decoration: none;
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
+      }
+
+      .fuckerjs-button:hover {
+        background: #0d6efd;
+        color: #ffffff;
+        border-color: #0d6efd;
+      }
+
+      /* Footer Styling */
+      .footer {
+        background: #e0e5ec;
+        padding: 10px 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        box-shadow: 
+          8px 8px 15px #a3b1c6, 
+          -8px -8px 15px #ffffff;
+        font-family: 'Courier New', Courier, monospace;
+        text-align: center;
+      }
+
+      .footer a {
+        color: #0d6efd;
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
     </style>
     <title>Obfuscator Javascript</title>
   </head>
-  <body class="bg-light">
+  <body class="bg-light">  
+    <div class="min-h-screen bg-gradient-to-r from-slate-300 to-slate-100">
+        <div class="py-8 pl-8 w-full neumorphic">
+            <div class="fuckerjs-container">
+                <h1 class="text-3xl font-bold animate-pulse">CodeGuard</h1>
+              <a href="#" class="fuckerjs-button">FuckerJS</a>
+            </div>
+        </div>
+
     <main class="my-5">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6 p-5 mx-auto neumorphic-form">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 p-5 neumorphic-form">
             <h3 class="fw-bold">Obfuscator Javascript Tools</h3>
             <p>
               A free and efficient obfuscator for JavaScript. Make your code
@@ -133,6 +190,15 @@
         </div>
       </div>
     </main>
+
+
+       </div>
+    </section>
+	<div class="text-center m-5 neumorphic">
+		<a href="https://t.me/BJ_Tricks" class="text-center">©Mr,BaBlU</a>
+	</div>
+    <div class="divider"></div>
+    <script>
 
     <!-- Bootstrap Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>

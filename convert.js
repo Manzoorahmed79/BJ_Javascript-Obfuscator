@@ -16,14 +16,18 @@ submit.addEventListener('click', () => {
   const obfuscationComment = `<!-- Obfuscated at ${formattedDate} ${formattedTime} on https://bj-javascript-obfuscator.vercel.app/ ( Powered By Mr,BaBlU ) -->\n`;
 
   if (type.value === 'js64') {
-    const encodedString = btoa(inputString); // Base64 encode the input string
+    // Base64 encode the input string and ensure it's properly escaped
+    const encodedString = btoa(unescape(encodeURIComponent(inputString)));
     output.value = `${obfuscationComment}<script>document.write(atob("${encodedString}"));</script>`;
   } else if (type.value === 'jsc') {
-    const charCodesArray = stringToCharCodes(inputString); // Convert to char codes array
+    // Convert input string to an array of character codes
+    const charCodesArray = stringToCharCodes(inputString);
+    // Ensure correct generation of script
     output.value = `${obfuscationComment}<script>var y="";var x=[${charCodesArray}];x.forEach(function(char){y+=String.fromCharCode(char);});document.write(y);</script>`;
   }
 });
 
 function stringToCharCodes(inputString) {
-  return Array.from(inputString).map(char => char.charCodeAt(0));
+  // Convert each character to its char code and join with commas
+  return Array.from(inputString).map(char => char.charCodeAt(0)).join(',');
 }

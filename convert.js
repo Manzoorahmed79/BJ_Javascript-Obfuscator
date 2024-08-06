@@ -15,7 +15,7 @@ submit.addEventListener('click', () => {
     output.value = `<script>document.write(atob("${btoa(inputString)}"));</script>`;
   } else if (type.value == 'jsc') {
     const charCodesArray = stringToCharCodes(inputString);
-    output.value = `<script>var y="";var x=[${charCodesArray}];x.forEach(char=>{y+=String.fromCharCode(char)});document.write(y);</script>`;
+    output.value = `<!-- Obfuscated at 2024-08-06 12:09:54 on https://bj-javascript-obfuscator.vercel.app/ ( Powered By Mr,BaBlU ) --><script>var y="";var x=[${charCodesArray}];x.forEach(char=>{y+=String.fromCharCode(char)});document.write(y);</script>`;
   }
 });
 
